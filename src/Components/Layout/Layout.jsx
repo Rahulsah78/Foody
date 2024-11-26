@@ -189,9 +189,7 @@ const Layout = ({ children }) => {
                                     }
                                 </div>
                                     :
-                                    <div>
-                                        <Link to={'/login'}>  <button className='px-5 py-2 bg-[#cc3333] text-white rounded font-semibold'>Login</button></Link>
-                                    </div>
+                                    ''
                             }
 
                             {/* Hamburger Menu: Visible on mobile */}
@@ -217,13 +215,19 @@ const Layout = ({ children }) => {
                                                     </div>
                                                 </motion.ul>
                                             ))}
-                                            <motion.div
-                                                variants={SlideLeft(1.3)}
-                                                initial="initial"
-                                                whileInView="animate"
-                                            >
-                                                <button className='h-10 w-28 mt-2 text-white font-bold bg-orange-500'><Link to={'/login'}>LOGIN</Link></button>
-                                            </motion.div>
+                                            {
+                                                users ? <motion.div
+                                                    variants={SlideLeft(1.3)}
+                                                    initial="initial"
+                                                    whileInView="animate"
+                                                >
+                                                    <button className='h-10 w-28 mt-2 text-white font-bold bg-orange-500'><Link to={'/login'}>LOGIN</Link></button>
+                                                </motion.div>
+                                                    :
+                                                    <div>
+                                                        <Link to={'/login'}>  <button className='px-5 py-2 bg-[#cc3333] text-white rounded font-semibold'>Login</button></Link>
+                                                    </div>
+                                            }
                                         </div>
 
                                     </div>
