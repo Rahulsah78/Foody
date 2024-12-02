@@ -126,7 +126,7 @@ const Layout = ({ children }) => {
                     </div>
 
                     {/* second navbar */}
-                    <div className='h-[100px] md:px-16 p-8 flex items-center justify-between shadow-lg bg-[#FFF8EE]'>
+                    <div className='h-[50px] md:px-16 p-8 flex items-center justify-between shadow-lg bg-[#FFF8EE]'>
                         <div>
                             <Link to={'/'}><h1 className='text-3xl font-bold font-poppins'>FOODY</h1></Link>
                         </div>
@@ -150,7 +150,7 @@ const Layout = ({ children }) => {
                             {
                                 users ? <div
                                     onClick={() => setDropUser(!dropuser)}
-                                    className="h-14 w-14 overflow-hidden cursor-pointer bg-red-500 rounded-full md:block hidden" // Hidden on mobile, shown on desktop
+                                    className="h-11 w-11 overflow-hidden cursor-pointer bg-red-500 rounded-full md:block hidden" // Hidden on mobile, shown on desktop
                                 >
                                     <img src="/img/user.enc" alt="user" />
                                     {

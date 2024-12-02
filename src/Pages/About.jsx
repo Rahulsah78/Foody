@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../Components/Layout/Layout'
-import Loader from '../Loader/Loader';
+
 
 const About = () => {
     
