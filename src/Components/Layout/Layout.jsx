@@ -189,7 +189,14 @@ const Layout = ({ children }) => {
                                     }
                                 </div>
                                     :
-                                    ''
+                                    <div className="hidden lg:block">
+                                        <Link to={'/login'}>
+                                            <button className="px-5 py-2 bg-[#cc3333] text-white rounded font-semibold">
+                                                Login
+                                            </button>
+                                        </Link>
+                                    </div>
+
                             }
 
                             {/* Hamburger Menu: Visible on mobile */}
@@ -215,29 +222,30 @@ const Layout = ({ children }) => {
                                                     </div>
                                                 </motion.ul>
                                             ))}
+
                                             {
                                                 users ? <motion.div
                                                     variants={SlideLeft(1.3)}
                                                     initial="initial"
                                                     whileInView="animate"
                                                 >
-                                                    <button className='h-10 w-28 mt-2 text-white font-bold bg-orange-500'><Link to={'/login'}>LOGIN</Link></button>
+                                                    <button onClick={handlelogout} className='h-10 w-28 mt-2 text-white font-bold bg-orange-500'><Link>Log Out</Link></button>
                                                 </motion.div>
                                                     :
-                                                    <div>
-                                                        <Link to={'/login'}>  <button className='px-5 py-2 bg-[#cc3333] text-white rounded font-semibold'>Login</button></Link>
-                                                    </div>
+                                                    <motion.div
+                                                        variants={SlideLeft(1.3)}
+                                                        initial="initial"
+                                                        whileInView="animate"
+                                                    >
+                                                        <button className='h-10 w-28 mt-2 text-white font-bold bg-orange-500'><Link to={'/login'}>LOGIN</Link></button>
+                                                    </motion.div>
                                             }
                                         </div>
-
                                     </div>
                                 }
                             </div>
                         </div>
                     </div>
-
-
-
                 </nav>
                 <div>{children}</div>
                 <footer className="font-poppins md:px-16 px-3.5 md:mt-0 mt-5 bg-[#CC3333] text-white py-10">

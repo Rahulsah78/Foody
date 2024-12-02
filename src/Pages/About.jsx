@@ -3,32 +3,11 @@ import Layout from '../Components/Layout/Layout'
 import Loader from '../Loader/Loader';
 
 const About = () => {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
-
-        return () => clearTimeout(timer);
-    }, []);
-    useEffect(() => {
-        if (isLoading) {
-          // Disable scrolling
-          document.body.style.overflow = 'hidden';
-        } else {
-          // Enable scrolling
-          document.body.style.overflow = 'auto';
-        }
-      }, [isLoading]);
+    
     return (
         <>
             <Layout>
-            {isLoading && (
-                    <div className="absolute flex items-center justify-center top-0 left-0 h-[100vh] z-[999] w-full bg-[#FFF8EE]">
-                        <Loader />
-                    </div>
-                )}
+            
                 <div>
                     {/* Container div for the fixed image */}
                     <div className='relative md:h-[55vw] h-[150vw]'>
