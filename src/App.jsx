@@ -1,5 +1,7 @@
 import React from 'react'
 import 'animate.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HeroPage from './Components/Hero/HeroPage'
 import About from './Pages/About'

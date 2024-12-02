@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  const allCartItem = useSelector((state) => state.CartSlice.carts); // Fetch cart items from Redux store
+  console.log(allCartItem);
 
   return (
     <>
@@ -43,40 +46,27 @@ const Checkout = () => {
               <div className="space-y-6">
                 <h2 className="text-xl font-semibold text-gray-800">Order Summary</h2>
                 <div className="bg-gray-100 p-4 rounded-lg">
-                  {/* Replace with dynamic cart items */}
-                  <div className="flex justify-between mb-4">
-                    <p className="text-gray-700">Product Name</p>
-                    <p className="text-gray-700">$50.00</p>
-                  </div>
+                  {/* Loop over cart items to display dynamic product info */}
+                  {allCartItem.map((item, index) => (
+                    <div key={index} className="flex items-center">
+                      <h4>knknknknk</h4>
+                    </div>
+                  ))}
+
+                  {/* Shipping and Total */}
                   <div className="flex justify-between mb-4">
                     <p className="text-gray-700">Shipping</p>
                     <p className="text-gray-700">$5.00</p>
                   </div>
                   <div className="flex justify-between mb-4">
                     <p className="text-gray-700 font-semibold">Total</p>
-                    <p className="text-gray-700 font-semibold">$55.00</p>
+                    <p className="text-gray-700 font-semibold">
+                      ${allCartItem.reduce((total, item) => total + item.price, 0) + 5}
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Payment Section */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-gray-800">Payment Information</h2>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="cardNumber" className="block text-gray-700">Card Number</label>
-                  <input type="text" id="cardNumber" name="cardNumber" placeholder="xxxx-xxxx-xxxx" className="w-full p-3 mt-1 border border-gray-300 rounded-md" />
-                </div>
-                <div>
-                  <label htmlFor="expiry" className="block text-gray-700">Expiry Date</label>
-                  <input type="text" id="expiry" name="expiry" placeholder="xxxx" className="w-full p-3 mt-1 border border-gray-300 rounded-md" />
-                </div>
-                <div>
-                  <label htmlFor="cvv" className="block text-gray-700">CVV</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="xx-xx" className="w-full p-3 mt-1 border border-gray-300 rounded-md" />
-                </div>
-              </form>
             </div>
 
             {/* Button to Submit */}

@@ -1,6 +1,10 @@
 import React from 'react'
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const WhyWeAreTheBest = () => {
+
     const Best = [
         {
             img: "/img/cooking 1.png",
@@ -17,12 +21,19 @@ const WhyWeAreTheBest = () => {
             title: "Passionate Chefs",
             para: "Beguiled and demoralized by all get charms pleasure the moments ever so blinded by desire."
         },
-    ]
+    ];
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
         <>
             <div className='md:px-16 px-8 md:mb-5 mb-10 bg-[#FFF8EE] font-poppins'>
                 <h2 className='text-center md:text-2xl text-2xl font-bold text-[#CC3333]'>Why We Are The Best</h2>
-                <div className='md:flex md:flex-row flex-col items-center gap-5 mt-10'> {/* Flex row only applies to md and above */}
+                <div data-aos="fade-up" className='md:flex md:flex-row flex-col items-center gap-5 mt-10'> {/* Flex row only applies to md and above */}
                     {
                         Best.map((item, index) => (
                             <div

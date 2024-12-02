@@ -1,9 +1,34 @@
+import { useEffect, useState } from "react";
 import Layout from "../Components/Layout/Layout";
+import Loader from "../Loader/Loader";
 
 const Contact = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, []);
+    useEffect(() => {
+        if (isLoading) {
+          // Disable scrolling
+          document.body.style.overflow = 'hidden';
+        } else {
+          // Enable scrolling
+          document.body.style.overflow = 'auto';
+        }
+      }, [isLoading]);
     return (
         <>
             <Layout>
+                {isLoading && (
+                    <div className="absolute flex items-center justify-center top-0 left-0 h-[100vh]  z-[999] w-full bg-[#FFF8EE]">
+                        <Loader />
+                    </div>
+                )}
                 <div className="px-4 md:px-16 py-8 bg-[#FFF8EE]">
                     <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
 
@@ -65,6 +90,6 @@ const Contact = () => {
             </Layout>
         </>
     );
-};
+}
 
 export default Contact;

@@ -1,4 +1,7 @@
-import React from 'react'
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const PopularDishes = () => {
     const dishes = [
@@ -17,22 +20,36 @@ const PopularDishes = () => {
         {
             img: '/img/Dishes_5.png'
         },
-    ]
+    ];
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
         <>
             <div className='md:px-16 px-8 bg-[#FFF8EE]'>
-                <h5 className='text-[#2A435D] font-bold text-center font-poppins'>Food Item</h5>
-                <h1 className='text-3xl text-[#CC3333] font-bold text-center font-poppins'>Popular Dishes</h1>
-                <div className='grid grid-cols-2 gap-3 mt-6 md:flex md:gap-5 md:w-full'>
-                    {
-                        dishes.map((item, index) => (
-                            <div key={index} className='flex flex-wrap md:h-[120px] md:w-[229px] h-[35vw] w-[35vw] rounded-[5px] '>
-                                <img className='h-full object-cover' src={item.img} alt="dishes" />
-                            </div>
-                        ))
-                    }
-                </div>
+            <h5 className='text-[#2A435D] font-bold text-center font-poppins'>Food Item</h5>
+            <h1 className='text-3xl text-[#CC3333] font-bold text-center font-poppins'>
+                Popular Dishes
+            </h1>
+            <div
+                className='grid grid-cols-2 gap-3 mt-6 md:flex md:gap-5 md:w-full'
+                data-aos="fade-up"
+            >
+                {dishes.map((item, index) => (
+                    <div
+                        key={index}
+                        className='flex flex-wrap md:h-[120px] md:w-[229px] h-[35vw] w-[35vw] rounded-[5px]'
+                        data-aos="fade-up"
+                    >
+                        <img className='h-full object-cover' src={item.img} alt="dishes" />
+                    </div>
+                ))}
             </div>
+        </div>
 
         </>
     )

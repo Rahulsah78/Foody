@@ -1,139 +1,169 @@
-import React, { useState } from "react";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { RxCross2 } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from 'react';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import { RxCross1 } from 'react-icons/rx';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';  // Import toast for notifications
 
 const Register = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        if (name === 'fullName') {
+            setName(value);
+        } else if (name === 'email') {
+            setEmail(value);
+        } else if (name === 'password') {
+            setPassword(value);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const validationErrors = {};
+        if (!name) validationErrors.name = 'This field is required';
+        if (!email) validationErrors.email = 'This field is required';
+        if (!password) validationErrors.password = 'This field is required';
+
+        // Password validation (minimum length of 8 characters)
+        if (password && password.length < 8) {
+            toast.error("Password must be at least 8 characters long");
+            return;  // Return early to prevent further submission
+        }
+
+        setErrors(validationErrors);
+
+        // If no validation errors, proceed with form submission logic
+        if (Object.keys(validationErrors).length === 0) {
+            const newData = { name, email, password };
+            let arr = JSON.parse(localStorage.getItem("UserLoginInfo") || "[]");
+            arr.push(newData);
+            localStorage.setItem("UserLoginInfo", JSON.stringify(arr));
+
+            setData({ name: "", email: "", password: "" });
+            toast.success("Signup successful");
+            navigate("/login");
+        }
+    };
     const [data, setData] = useState({
         name: "",
         email: "",
         password: "",
     });
 
-    const handleInput = (e) => {
-        const { id, value } = e.target;
-        setData((prevData) => ({
-            ...prevData,
-            [id]: value,
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Basic validation before proceeding
-        if (!data.name || !data.email || !data.password) {
-            toast.error("All fields are required");
-            return;
-        }
-
-        // Password validation (minimum length of 8 characters)
-        if (data.password.length < 8) {
-            toast.error("Password must be at least 8 characters long");
-            return;
-        }
-
-        let arr = JSON.parse(localStorage.getItem("UserLoginInfo") || "[]");
-        arr.push(data);
-        localStorage.setItem("UserLoginInfo", JSON.stringify(arr));
-
-        setData({ name: "", email: "", password: "" });
-        toast.success("Signup successful");
-        navigate("/login");
-    };
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    // Toggle functionality
+    // Toggle password visibility
     const togglePasswordVisibility = (e) => {
-        e.preventDefault(); // Prevent any unintended form submission
+        e.preventDefault(); // Prevents form submission
         setShowPassword((prev) => !prev);
     };
 
+
+
     return (
-        <div className="flex justify-center items-center min-h-screen bg-[#FFF8EE]">
-            {/* Close Button */}
-            <div className="absolute top-24 right-24">
-                <Link to={"/"}>
-                    <button onClick={() => navigate("/")}>
-                        <RxCross2 className="text-4xl cursor-pointer transition-transform duration-300 hover:rotate-[180deg]" />
-                    </button>
-                </Link>
+        <>
+            <div className="absolute top-0 right-5 md:top-16 md:right-24 z-[999]">
+                <button
+                    onClick={() => navigate('/')}
+                    className="text-3xl hover:rotate-180 transition-transform duration-300 ease-in-out"
+                >
+                    <RxCross1 />
+                </button>
             </div>
 
-            {/* Glassmorphism Form */}
-            <div className="bg-white animate__animated animate__fadeIn bg-opacity-10 backdrop-blur-md shadow-lg rounded-lg p-8 w-full max-w-md border border-white border-opacity-30">
-                <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
-                    Create an Account
-                </h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-gray-800 font-medium mb-2" htmlFor="name">
-                            Name
-                        </label>
-                        <input
-                            onChange={handleInput}
-                            id="name"
-                            type="text"
-                            className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white bg-opacity-30 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your name"
-                            value={data.name}
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-800 font-medium mb-2" htmlFor="email">
-                            Email
-                        </label>
-                        <input
-                            onChange={handleInput}
-                            id="email"
-                            type="email"
-                            className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white bg-opacity-30 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your email"
-                            value={data.email}
-                        />
-                    </div>
-                    <div className="mb-6 relative">
-                        <label className="block text-gray-800 font-medium mb-2" htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            onChange={handleInput}
-                            id="password"
-                            type={showPassword ? "text" : "password"}
-                            className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white bg-opacity-30 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your password"
-                            value={data.password}
-                        />
-                        <div className="absolute top-10 right-5">
+
+
+            <div className="min-h-screen bg-[#FFF8EE] flex items-center justify-center overflow-hidden">
+                <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+                    <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
+                        Create an Account
+                    </h2>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Full Name */}
+                        <div>
+                            <input
+                                onChange={handleChange}
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                value={name}
+                                placeholder="Your Name"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            />
+                            {errors.name && (
+                                <small className="text-red-500 text-sm">{errors.name}</small>
+                            )}
+                        </div>
+
+                        {/* Email */}
+                        <div>
+                            <input
+                                onChange={handleChange}
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                placeholder="you@example.com"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            />
+                            {errors.email && (
+                                <small className="text-red-500 text-sm">{errors.email}</small>
+                            )}
+                        </div>
+
+                        {/* Password */}
+                        <div className='relative'>
+                            <input
+                                onChange={handleChange}
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={password}
+                                placeholder="Password"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            />
+                            <div className="absolute top-1 right-2">
+                                <button
+                                    type="button" // Prevents form submission
+                                    onClick={togglePasswordVisibility}
+                                    className="h-8 w-8 text-xl text-red-500 rounded-full focus:outline-none"
+                                    aria-label="Toggle password visibility"
+                                >
+                                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                                </button>
+                            </div>
+                            {errors.password && (
+                                <small className="text-red-500 text-sm">{errors.password}</small>
+                            )}
+                        </div>
+
+                        {/* Submit Button */}
+                        <div className="text-center">
                             <button
-                                type="button" // Prevents form submission
-                                onClick={togglePasswordVisibility}
-                                className="h-8 w-8 text-red-500 rounded-full focus:outline-none"
-                                aria-label="Toggle password visibility"
+                                type="submit"
+                                className="w-full bg-[#cc3333] text-white py-2 rounded-md transition duration-300"
                             >
-                                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                                Register
                             </button>
                         </div>
-                    </div>
-                    <button
-                        type="submit"
-                        className="mt-3 w-full bg-[#cc3333] bg-opacity-80 text-white py-2 rounded-md font-medium"
-                    >
-                        Register
-                    </button>
-                </form>
-                <p className="text-gray-600 text-sm text-center mt-4">
-                    Already have an account?{" "}
-                    <a href="/login" className="text-blue-500 hover:underline">
-                        Login
-                    </a>
-                </p>
+                    </form>
+
+                    {/* Redirect to Login */}
+                    <p className="text-sm text-center text-gray-500 mt-4">
+                        Already have an account?{' '}
+                        <Link to={'/login'} className="text-blue-500 hover:underline">
+                            Login here
+                        </Link>
+                    </p>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

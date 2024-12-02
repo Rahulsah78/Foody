@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { BiBullseye } from 'react-icons/bi';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInput = (e) => {
@@ -17,17 +16,35 @@ const Login = () => {
 
     if (id === 'email') {
       setEmail(value);
+      setEmailError(''); // Clear email error when user starts typing
     } else if (id === 'password') {
       setPassword(value);
+      setPasswordError(''); // Clear password error when user starts typing
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Reset errors
+    setEmailError('');
+    setPasswordError('');
+
     // Basic validation before checking localStorage
-    if (!email || !password) {
-      setError('Please fill in both fields');
+    if (!email) {
+      setEmailError('Email is required');
+      return;
+    }
+
+    if (!password) {
+      setPasswordError('Password is required');
+      return;
+    }
+
+    // Check if password length is sufficient
+    if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
+      toast.error('Password must be at least 8 characters long');
       return;
     }
 
@@ -37,7 +54,7 @@ const Login = () => {
     // If there are no users in localStorage, prevent showing the error
     if (users.length === 0) {
       toast.error('No users registered!');
-      setError('No users registered yet. Please register first.');
+      setPasswordError('No users registered yet. Please register first.');
       return;
     }
 
@@ -49,11 +66,11 @@ const Login = () => {
       navigate('/'); // Redirect to the home page (or any other page) after successful login
     } else {
       toast.error('Invalid credentials!');
-      setError('Invalid email or password!');
+      setPasswordError('Invalid email or password!');
     }
   };
 
-  // toggle functionnality
+  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
@@ -73,6 +90,7 @@ const Login = () => {
                 onChange={handleInput}
                 className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               />
+              {emailError && <p className="text-red-500 text-xs mt-2">{emailError}</p>}
             </div>
             <div className="relative">
               <input
@@ -86,14 +104,14 @@ const Login = () => {
               <div className="absolute top-4 right-4 flex items-center">
                 <button
                   onClick={togglePasswordVisibility}
-                  className="h-8 w-8 flex items-center justify-center text-[#cc3333]  rounded-full focus:outline-none"
+                  className="h-8 w-8 flex items-center justify-center text-[#cc3333] rounded-full focus:outline-none"
                   aria-label="Toggle password visibility"
                 >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </button>
               </div>
+              {passwordError && <p className="text-red-500 text-xs mt-2">{passwordError}</p>}
             </div>
-            {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
             <div className="flex justify-between items-center">
               <label className="flex items-center text-gray-700">
                 <input type="checkbox" className="mr-2" /> Remember me
@@ -102,7 +120,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#cc3333] text-white p-3 rounded-lg  focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full bg-[#cc3333] text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               Login
             </button>

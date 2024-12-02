@@ -1,13 +1,24 @@
-import React from 'react';
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const RICH_HEALTHY = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
         <div className='md:px-16 px-8 py-10 bg-[#FFF8EE]'>
             <h3 className='text-[#2A435D] text-center text-xl font-bold font-poppins'>RICH & HEALTHY</h3>
             <div className='md:flex gap-8 relative md:mt-8 mt-10'>
                 {/* Chef's Image (Mobile first) */}
                 <div className='md:w-[361px] md:items-center items-center md:h-auto w-full'>
-                    <img
+                    <img 
+                        data-aos="fade-right"
                         src='/img/richHealthy_1.png'
                         alt='Chef cooking'
                         className='rounded-lg shadow-lg'
@@ -45,8 +56,8 @@ const RICH_HEALTHY = () => {
                     </div>
 
                     {/* Right Image (Second Image) */}
-                    <div className='md:w-[250px] md:absolute left-[60vw] top-[12vw] rounded-[10px] bg-red-500'>
-                        <img
+                    <div data-aos="fade-left" className='md:w-[250px] md:absolute left-[60vw] top-[12vw] rounded-[10px] '>
+                        <img 
                             src='/img/richHealthy_2.png'
                             alt='Salad dish'
                             className='w-full rounded-lg shadow-lg'

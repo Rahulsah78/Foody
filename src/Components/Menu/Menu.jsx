@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Menu = () => {
     const menuItems = [
@@ -53,9 +56,16 @@ const Menu = () => {
 
         },
     ];
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
         <>
-            <div className='md:px-16 px-8 bg-[#FFF8EE] font-poppins'>
+            <div  data-aos="fade-up" className='md:px-16 px-8 bg-[#FFF8EE] font-poppins'>
                 <h3 className=' p-5 font-bold text-[#CC3333] text-center'>SPECIALS MANU FOR ALL TIME</h3>
                 <div className='flex items-center justify-center gap-5 mx-auto flex-wrap '>
                     {

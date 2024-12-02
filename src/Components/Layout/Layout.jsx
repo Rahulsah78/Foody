@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 import { SlideLeft } from '../../Animation/AllAnimation'
 import { BiLogOut } from 'react-icons/bi'
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Layout = ({ children }) => {
     const location = useLocation()
@@ -39,6 +40,14 @@ const Layout = ({ children }) => {
         },
     ];
 
+    // top animation 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -107,20 +116,20 @@ const Layout = ({ children }) => {
                 )}
                 <nav className='w-full sticky top-0 left-0 z-[999]'>
                     {/* top navbar */}
-                    <div className=' flex items-center justify-between bg-[#CC3333] w-full h-10 p-8 md:px-16'>
-                        <div className='md:flex flex items-center gap-14'>
-                            <div className='md:flex flex items-center   md:items-center gap-2'>
-                                <FaClock className='text-white md:text-xs text-xs' />
-                                <h4 className='text-white md:text-xs text-xs font-poppins'>7:30AM - 9:30PM</h4>
+                    <div className="flex items-center justify-between bg-[#CC3333] w-full h-10 p-8 md:px-16">
+                        <div data-aos="fade-down" className="flex items-center gap-14">
+                            <div className="flex items-center gap-2">
+                                <FaClock className="text-white md:text-xs text-xs" />
+                                <h4 className="text-white md:text-xs text-xs font-poppins">7:30AM - 9:30PM</h4>
                             </div>
-                            <div className='hidden md:flex flex-row items-center justify-center gap-2'>
-                                <IoCallSharp className='text-white' />
-                                <h4 className='text-white text-xs font-poppins'>9874563210</h4>
+                            <div className="hidden md:flex items-center gap-2">
+                                <IoCallSharp className="text-white" />
+                                <h4 className="text-white text-xs font-poppins">9874563210</h4>
                             </div>
                         </div>
                         <div>
-                            <Link to={'/register'}>
-                                <button className='text-white md:text-xs text-xs font-poppins'>REGISTER</button>
+                            <Link to="/register">
+                                <button className="text-white md:text-xs text-xs font-poppins">REGISTER</button>
                             </Link>
                         </div>
                     </div>
@@ -142,7 +151,7 @@ const Layout = ({ children }) => {
                         </div>
                         {/* Cart and Hamburger Menu: Always visible, justified between on mobile */}
                         <div className='flex items-center gap-4 md:gap-7'>
-                            <div className='flex items-center justify-center relative rounded-full'>
+                            <div className='cursor-pointer flex items-center justify-center relative rounded-full'>
                                 <Link to={'/cart'}><FaCartArrowDown className='text-3xl text-[#2A435D]' /></Link>
                                 <span className='absolute -top-7 right-0 text-red-500 text-[25px]'>{allCartItem.length}</span>
                             </div>
@@ -155,7 +164,7 @@ const Layout = ({ children }) => {
                                     <img src="/img/user.enc" alt="user" />
                                     {
                                         dropuser && (
-                                            <div className="animate__animated animate__fadeIn h-64 w-44 bg-red-500 absolute top-40 right-0 rounded-lg shadow-lg p-4">
+                                            <div className="animate__animated animate__fadeIn h-64 w-44 bg-red-500 absolute top-[10.7vw] right-0 rounded-lg shadow-lg p-4">
                                                 <ul className="flex flex-col gap-3 text-white">
                                                     <li className="flex items-center gap-2 hover:ml-5 transition-all duration-300">
                                                         <FaUser /> {/* Icon for Profile */}
