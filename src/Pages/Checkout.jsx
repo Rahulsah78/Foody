@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
 
 const Checkout = () => {
-  
+
   return (
     <>
       <Layout>
@@ -80,9 +81,11 @@ const Checkout = () => {
 
             {/* Button to Submit */}
             <div className="mt-8 text-center">
-              <button className="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition duration-300">
-                Complete Order
-              </button>
+              <Link to={'/payment'}>
+                <button className="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition duration-300">
+                  Complete Order
+                </button>
+              </Link>
             </div>
           </div>
         </div>

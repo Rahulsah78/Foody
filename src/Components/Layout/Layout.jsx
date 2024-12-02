@@ -126,7 +126,7 @@ const Layout = ({ children }) => {
                     </div>
 
                     {/* second navbar */}
-                    <div className='h-[119px] md:px-16 p-8 flex items-center justify-between shadow-lg bg-[#FFF8EE]'>
+                    <div className='h-[100px] md:px-16 p-8 flex items-center justify-between shadow-lg bg-[#FFF8EE]'>
                         <div>
                             <Link to={'/'}><h1 className='text-3xl font-bold font-poppins'>FOODY</h1></Link>
                         </div>

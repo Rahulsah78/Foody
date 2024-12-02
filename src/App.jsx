@@ -18,6 +18,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Checkout from './Pages/Checkout';
 import Register from './Pages/Register';
+import Payment from './Pages/Payment';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
       <Route path={'/ourfoods/:foodId'} element={<FoodDetails />} />
       <Route path={'/wishlist'} element={<WishList />} />
       <Route path={'/policy'} element={<PrivacyPolicyPage />} />
+      <Route path={'/payment'} element={<Payment />} />
       <Route path={'/*'} element={<NotFound />} />
     </Routes>
     <ToastContainer />
