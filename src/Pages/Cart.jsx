@@ -18,33 +18,34 @@ const Cart = () => {
         setIsUserLoggedIn(users.length > 0);
     }, []);
 
-    // IncreaseQuantity
+    // Increase Quantity
     const handleIncreaseQuantity = (item) => {
         dispatch(addToCart(item)); // Pass the entire item
     };
 
-    // decreaseQuantity
+    // Decrease Quantity
     const handleDecreaseQuantity = (id) => {
         dispatch(decreaseQuantity(id)); // Pass only the id
     };
 
-    // deleteitem to cart
+    // Delete item from cart
     const handleDeleteCart = (e) => {
         dispatch(removeToCart(e));
         toast.success("Item removed from your cart");
     };
 
-    // emptycarts
+    // Empty cart
     const handleemptycart = () => {
         dispatch(emptycartitem());
         toast.success("Your cart is empty");
     };
 
-    // Calculate total price
+    // Calculate total price with discount
     useEffect(() => {
         let totalPrice = 0;
         allCartItem.forEach((item) => {
-            totalPrice += item.price * item.quantity;
+            const discountedPrice = item.price - (item.price * (item.discount / 100)); // Apply discount
+            totalPrice += discountedPrice * item.quantity; // Add discounted price to the total
         });
         setTotal(totalPrice);
     }, [allCartItem]);
@@ -71,40 +72,47 @@ const Cart = () => {
                                             <th className="py-3 px-4">Product</th>
                                             <th className="py-3 px-4">Product Name</th>
                                             <th className="py-3 px-4">Unit Price</th>
+                                            <th className="py-3 px-4">Discounted Price</th>
                                             <th className="py-3 px-4">Quantity</th>
                                             <th className="py-3 px-4">Total</th>
                                             <th className="py-3 px-4">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {allCartItem.map((item) => (
-                                            <tr key={item.id} className="border-b">
-                                                <td className="py-5">
-                                                    <img
-                                                        src={item.img}
-                                                        alt={item.name}
-                                                        className="w-16 h-16 object-cover rounded-md shadow-md"
-                                                    />
-                                                </td>
-                                                <td className="py-4 px-6 font-bold">{item.title}</td>
-                                                <td className="py-4 px-6 font-semibold">${item.price}</td>
-                                                <td className="py-4 px-6">
-                                                    <div className="flex items-center">
-                                                        <button onClick={() => handleDecreaseQuantity(item.id)} className="bg-gray-200 text-gray-700 px-2 rounded-l">-</button>
-                                                        <span className="px-4">{item.quantity}</span>
-                                                        <button onClick={() => handleIncreaseQuantity(item)} className="bg-gray-200 text-gray-700 px-2 rounded-r">+</button>
-                                                    </div>
-                                                </td>
-                                                <td className="py-4 px-6 font-semibold">
-                                                    ${ (item.price * item.quantity).toFixed(2) }
-                                                </td>
-                                                <td className="py-4 px-6">
-                                                    <button onClick={() => handleDeleteCart(item.id)} className="text-red-600 text-2xl hover:text-red-800">
-                                                        <BsTrash />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                        {allCartItem.map((item) => {
+                                            const discountedPrice = item.price - (item.price * (item.discount / 100)); // Apply discount
+                                            const totalPrice = (discountedPrice * item.quantity).toFixed(2);
+                                            
+                                            return (
+                                                <tr key={item.id} className="border-b">
+                                                    <td className="py-5">
+                                                        <img
+                                                            src={item.img}
+                                                            alt={item.name}
+                                                            className="w-16 h-16 object-cover rounded-md shadow-md"
+                                                        />
+                                                    </td>
+                                                    <td className="py-4 px-6 font-bold">{item.title}</td>
+                                                    <td className="py-4 px-6 font-semibold">${item.price}</td>
+                                                    <td className="py-4 px-6 font-semibold">${discountedPrice.toFixed(2)}</td>
+                                                    <td className="py-4 px-6">
+                                                        <div className="flex items-center">
+                                                            <button onClick={() => handleDecreaseQuantity(item.id)} className="bg-gray-200 text-gray-700 px-2 rounded-l">-</button>
+                                                            <span className="px-4">{item.quantity}</span>
+                                                            <button onClick={() => handleIncreaseQuantity(item)} className="bg-gray-200 text-gray-700 px-2 rounded-r">+</button>
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-4 px-6 font-semibold">
+                                                        ${totalPrice}
+                                                    </td>
+                                                    <td className="py-4 px-6">
+                                                        <button onClick={() => handleDeleteCart(item.id)} className="text-red-600 text-2xl hover:text-red-800">
+                                                            <BsTrash />
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
                                     </tbody>
                                 </table>
                             ) : (
@@ -121,7 +129,7 @@ const Cart = () => {
                                 <div className="mb-4">
                                     <div className="flex justify-between border-b pb-2">
                                         <span className="font-medium text-gray-700">Subtotal:</span>
-                                        <span className="text-gray-800">${total}</span>
+                                        <span className="text-gray-800">${total.toFixed(2)}</span>
                                     </div>
                                 </div>
 

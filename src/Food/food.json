@@ -4,188 +4,189 @@
     "img": "/img/burger.png",
     "title": "Supreme burger",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 15,
-    "quantity":0
+    "price": 150,
+    "discount": 4,
+    "quantity": 0,
+    "Rating": 4.5
   },
   {
     "id": 2,
     "img": "/img/Chicken Couscous.jpg",
     "title": "Chicken Couscous",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 13,
-    "quantity":0
+    "price": 130,
+    "discount": 7,
+    "quantity": 0,
+    "Rating": 4.7
   },
   {
     "id": 3,
     "img": "/img/Chicken Handi.jpg",
     "title": "Chicken Handi",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 18,
-    "quantity":0
+    "price": 180,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.6
   },
   {
     "id": 4,
     "img": "/img/Croatian Bean Stew.jpg",
     "title": "Croatian Bean Stew",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 10,
-    "quantity":0
+    "price": 100,
+    "discount": 8,
+    "quantity": 0,
+    "Rating": 4.2
   },
   {
     "id": 5,
     "img": "/img/Croatian lamb peka.jpg",
     "title": "Croatian lamb peka",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 22,
-    "quantity":0
+    "price": 120,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.1
   },
   {
     "id": 6,
     "img": "/img/Fish Soup.jpg",
     "title": "Fish Soup",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 9
-,
-"quantity":0  },
+    "price": 90,
+    "discount": 4,
+    "quantity": 0,
+    "Rating": 4.3
+  },
   {
     "id": 7,
     "img": "/img/Fresh sardines.jpg",
     "title": "Fresh sardines",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 14,
-    "quantity":0
+    "price": 120,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.1
   },
   {
     "id": 8,
     "img": "/img/Grilled eggplant with coconut milk.jpg",
     "title": "Grilled eggplant with coconut milk",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 11,
-    "quantity":0
+    "price": 100,
+    "discount": 7,
+    "quantity": 0,
+    "Rating": 4.4
   },
   {
     "id": 9,
     "img": "/img/Kidney Bean Curry.jpg",
     "title": "Kidney Bean Curry",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 7
-,
-"quantity":0  },
+    "price": 140,
+    "discount": 5,
+    "quantity": 0,
+    "Rating": 4.7
+  },
   {
     "id": 10,
     "img": "/img/Kumpir.jpg",
     "title": "Kumpir",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 12,
-    "quantity":0.50
+    "price": 160,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.6
   },
   {
     "id": 11,
     "img": "/img/Lamb Tagine.jpg",
     "title": "Lamb Tagine",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 20,
-    "quantity":0
+    "price": 200,
+    "discount": 8,
+    "quantity": 0,
+    "Rating": 4.9
   },
   {
     "id": 12,
     "img": "/img/Lamb tomato and sweet spices.jpg",
     "title": "Lamb tomato and sweet spices",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 17,
-    "quantity":0
+    "price": 180,
+    "discount": 5,
+    "quantity": 0,
+    "Rating": 4.8
   },
   {
     "id": 13,
     "img": "/img/Moroccan Carrot Soup.jpg",
     "title": "Moroccan Carrot Soup",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 8
-,
-"quantity":0  },
+    "price": 90,
+    "discount": 4,
+    "quantity": 0,
+    "Rating": 4.3
+  },
   {
     "id": 14,
     "img": "/img/pizza.png",
     "title": "Pizza",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 15,
-    "quantity":0
+    "price": 120,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.5
   },
   {
     "id": 15,
     "img": "/img/Portuguese custard tarts.jpg",
     "title": "Portuguese custard tarts",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 5
-,
-"quantity":0  },
+    "price": 220,
+    "discount": 7,
+    "quantity": 0,
+    "Rating": 4.7
+  },
   {
     "id": 16,
     "img": "/img/Recheado Masala Fish.jpg",
     "title": "Recheado Masala Fish",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 13,
-    "quantity":0
+    "price": 30,
+    "discount": 3,
+    "quantity": 0,
+    "Rating": 4.1
   },
   {
     "id": 17,
     "img": "/img/Spanish Tortilla.jpg",
     "title": "Spanish Tortilla",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 9
-,
-"quantity":0  },
+    "price": 190,
+    "discount": 6,
+    "quantity": 0,
+    "Rating": 4.7
+  },
   {
     "id": 18,
     "img": "/img/Sticky Toffee Pudding Ultimate.jpg",
     "title": "Sticky Toffee Pudding Ultimate",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 6
-,
-"quantity":0  },
+    "price": 150,
+    "discount": 4,
+    "quantity": 0,
+    "Rating": 4.4
+  },
   {
     "id": 19,
     "img": "/img/Tandoori chicken.jpg",
     "title": "Tandoori chicken",
     "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 14,
-    "quantity":0
-  },
-  {
-    "id": 20,
-    "img": "/img/Three-cheese souffles.jpg",
-    "title": "Three-cheese souffles",
-    "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 16,
-    "quantity":0
-  },
-  {
-    "id": 21,
-    "img": "/img/ice-cream1.avif",
-    "title": "Three-cheese souffles",
-    "description": "It is a long established fact that a reader will...",
-    "imgSrc": "https://via.placeholder.com/150?text=Chicken+Supreme+Pizza",
-    "price": 16,
-    "quantity":0
+    "price": 200,
+    "discount": 5,
+    "quantity": 0,
+    "Rating": 6
   }
 ]

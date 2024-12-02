@@ -3,14 +3,12 @@ import Layout from "../Components/Layout/Layout";
 import Fooddata from "../Food/food.json";
 import { useState } from "react";
 import { addToCart } from "../Redux/AllSlices/CartSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify"; // Import toast from react-toastify
-import "react-toastify/dist/ReactToastify.css"; // Import styles for react-toastify
-
-
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FoodDetails = () => {
-  const { foodId } = useParams(); // Must match ':foodId'
+  const { foodId } = useParams();
 
   // Find the food item based on the URL parameter
   const food = Fooddata.find((item) => item.id === parseInt(foodId));
@@ -19,7 +17,7 @@ const FoodDetails = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [showAlternateImage, setShowAlternateImage] = useState(false);
 
-  const dispatch = useDispatch(); // Initialize dispatch
+  const dispatch = useDispatch();
 
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
@@ -33,9 +31,12 @@ const FoodDetails = () => {
   }
 
   const handleAddToCart = (food) => {
-    dispatch(addToCart(food)); // Dispatch the action to Redux
-    toast.success("Item added to cart"); // Show a success toast
+    dispatch(addToCart(food));
+    toast.success("Item added to cart");
   };
+
+  // Calculate discounted price
+  const discountedPrice = (food.price - (food.price * food.discount) / 100).toFixed(2);
 
   return (
     <Layout>
@@ -62,7 +63,15 @@ const FoodDetails = () => {
           {/* Details Section */}
           <div className="w-full md:w-1/2 space-y-4 flex flex-col justify-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-bold text-gray-800">{food.title}</h1>
-            <p className="text-xl md:text-2xl font-semibold text-red-500">Price: ${food.price}</p>
+            <p className="text-lg md:text-xl font-semibold text-gray-600">Rating: ⭐ {food.rating} / 5</p>
+            <div className="flex items-center gap-10">
+              <p className="text-xl">
+                Npr{discountedPrice}
+              </p>
+              <del className="font-semibold text-red-500">
+                npr {food.price}
+              </del>
+            </div>
             <p className="text-sm md:text-lg text-gray-600 leading-relaxed">{food.description}</p>
             <div className="flex justify-center md:justify-start">
               <button
