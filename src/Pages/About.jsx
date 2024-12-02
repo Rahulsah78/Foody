@@ -51,7 +51,7 @@ const About = () => {
                             <div className='h-[60vw] md:h-full w-full md:w-1/2 rounded-[20px] overflow-hidden'>
                                 <img className='h-full w-full object-cover' src="https://www.shutterstock.com/image-photo/group-friends-meeting-restaurant-posing-260nw-2349014265.jpg" alt="Image" />
                             </div>
-                            <div className='h-[60vw] md:h-full w-full md:w-1/2 flex flex-col gap-6 px-4 py-4 md:px-8 md:py-0'>
+                            <div className='data-aos="fade-left" h-[60vw] md:h-full w-full md:w-1/2 flex flex-col gap-6 px-4 py-4 md:px-8 md:py-0'>
                                 <h4 className='font-bold text-[#2A435D] text-center md:text-left'>
                                     Opaleye yellowtail snapper, velvet catfish, graveldiver banded killifish, Old World rivuline catalufa eagle ray Moorish idol. Herring smelt barbeled dragonfish, tommy ruff.
                                 </h4>
