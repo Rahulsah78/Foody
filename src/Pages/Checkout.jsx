@@ -47,6 +47,8 @@ const Checkout = () => {
     }
   };
 
+  const isFormValid = Object.keys(errors).every((key) => !errors[key]) && Object.values(formData).every((value) => value !== "");
+
   return (
     <Layout>
       <div className="bg-[#FFF8EE] min-h-screen py-16">
@@ -146,7 +148,11 @@ const Checkout = () => {
           {/* Button to Submit */}
           <div className="mt-8 text-center">
             <Link to={'/payment'}>
-              <button className="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition duration-300">
+              <button
+                type="submit"
+                className={`w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition duration-300 ${!isFormValid && "bg-gray-500 cursor-not-allowed"}`}
+                disabled={!isFormValid}
+              >
                 Complete Order
               </button>
             </Link>
